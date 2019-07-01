@@ -48,32 +48,6 @@ init_dbus() {
 # and then configure one of them as MDS:
 # GLUSTER { PNFS_MDS = ${WITH_PNFS}; }
 
-bootstrap_config() {
-    echo "* Writing configuration"
-    cat <<END >${GANESHA_CONFIG}
-
-NFSV4 { Graceless = ${GRACELESS}; }
-EXPORT{
-    Export_Id = ${EXPORT_ID};
-    Path = "${EXPORT_PATH}";
-    Pseudo = "${PSEUDO_PATH}";
-    FSAL {
-        name = VFS;
-    }
-    Access_type = RW;
-    Disable_ACL = true;
-    Squash = ${SQUASH_MODE};
-    Protocols = ${PROTOCOLS};
-}
-
-EXPORT_DEFAULTS{
-    Transports = ${TRANSPORTS};
-    SecType = ${SEC_TYPE};
-}
-
-END
-}
-
 sleep 0.5
 
 if [ ! -f ${EXPORT_PATH} ]; then
@@ -88,9 +62,6 @@ echo "=================================="
 bootstrap_config
 init_rpc
 init_dbus
-
-echo "Generated NFS-Ganesha config:"
-cat ${GANESHA_CONFIG}
 
 echo "* Starting Ganesha-NFS"
 exec /usr/bin/ganesha.nfsd -F -L ${GANESHA_LOGFILE} -f ${GANESHA_CONFIG} -N ${VERBOSITY}
