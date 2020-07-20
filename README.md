@@ -1,11 +1,11 @@
 docker-nfs-ganesha
 =====================
 
-[![Microbadger Size](https://images.microbadger.com/badges/image/janeczku/nfs-ganesha.svg?maxAge=8600)][microbadger]
-[![Docker Pulls](https://img.shields.io/docker/pulls/janeczku/nfs-ganesha.svg?maxAge=8600)][hub]
+[![Microbadger Size](https://images.microbadger.com/badges/image/tristandeloche/nfs-ganesha.svg?maxAge=8600)][microbadger]
+[![Docker Pulls](https://img.shields.io/docker/pulls/tristandeloche/nfs-ganesha.svg?maxAge=8600)][hub]
 
-[microbadger]: https://microbadger.com/images/janeczku/nfs-ganesha
-[hub]: https://hub.docker.com/r/janeczku/nfs-ganesha/
+[microbadger]: https://microbadger.com/images/tristandeloche/nfs-ganesha
+[hub]: https://hub.docker.com/r/tristandeloche/nfs-ganesha/
 
 Docker image providing [NFS-Ganesha](http://nfs-ganesha.github.io/), a user space NFS v3/v4 fileserver.
 
@@ -13,7 +13,7 @@ Docker image providing [NFS-Ganesha](http://nfs-ganesha.github.io/), a user spac
 
 ```bash
 $ sudo docker run -d --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH --name nfs \
- -v /path/to/export:/data/nfs janeczku/nfs-ganesha:latest
+ -v /path/to/export:/data/nfs tristandeloche/nfs-ganesha:master
 ```
 
 Mount the NFS export:
